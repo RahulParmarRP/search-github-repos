@@ -59,7 +59,7 @@ const UsernameSearch = () => {
                         fullWidth
                         className={classes.submit}
                     >
-                        Submit
+                        Search Public Repos
                     </Button>
                 </form>
             </div>

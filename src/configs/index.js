@@ -1,0 +1,1 @@
+export const GITHUB_REST_API_BASE_URL = process.env.REACT_APP_GITHUB_REST_API;
