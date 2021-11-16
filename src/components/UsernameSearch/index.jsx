@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import { CssBaseline } from '@material-ui/core';
+import React, { useState } from 'react'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import Container from '@material-ui/core/Container'
+import { CssBaseline } from '@material-ui/core'
+import { useNavigate } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -23,12 +24,12 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
-}));
+}))
 
 const UsernameSearch = () => {
-    const classes = useStyles();
-    // const history = useHistory();
-    const [userNameInput, setUserNameInput] = useState('');
+    const classes = useStyles()
+    const navigate = useNavigate()
+    const [userNameInput, setUserNameInput] = useState('')
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -38,8 +39,8 @@ const UsernameSearch = () => {
                     noValidate
                     autoComplete="off"
                     onSubmit={(e) => {
-                        e.preventDefault();
-                        // history.push("/repos");
+                        e.preventDefault()
+                        navigate(`/user/${userNameInput}`)
                     }}
                 >
                     <TextField
@@ -64,7 +65,7 @@ const UsernameSearch = () => {
                 </form>
             </div>
         </Container>
-    );
-};
+    )
+}
 
-export default UsernameSearch;
+export default UsernameSearch
