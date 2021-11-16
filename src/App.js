@@ -15,7 +15,7 @@ function App() {
       <Navbar />
       <Routes >
         <Route exact path={"/"} element={<Home />} />
-        <Route exact path={"/repos"} element={<UserRepos />} />
+        <Route exact path={"/user/:username"} element={<UserRepos />} />
       </Routes >
     </>
   )
