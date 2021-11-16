@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import githubService from '../../services/github-service'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import Typography from '@mui/material/Typography'
 
 const UserRepos = () => {
     const { username } = useParams()
@@ -19,7 +23,21 @@ const UserRepos = () => {
         <div>
             {loading && ("Loading...")}
             {repos.map(repo => (<div key={repo.id}>{repo.name}</div>))}
-        </div>
+
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                Text only
+            </Typography>
+            <List dense={true}>
+                {repos.map(repo => (
+                    <ListItem key={repo.id}>
+                        <ListItemText
+                            primary={repo.name}
+                            secondary={repo.name ? 'Secondary text' : null}
+                        />
+                    </ListItem>))}
+
+            </List>
+        </div >
     )
 }
 
