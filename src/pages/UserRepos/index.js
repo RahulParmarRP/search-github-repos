@@ -9,6 +9,7 @@ import Container from '@mui/material/Container'
 import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
+import Avatar from '@mui/material/Avatar'
 
 //create a function to filter the repos by keywrord
 const filterRepos = (repos, keyword) => {
@@ -45,27 +46,21 @@ const UserRepos = () => {
                     {loading && (<CircularProgress />)}
 
                     {(!loading && repos.length > 0) && (
-                        <TextField
-                            value={keyword}
-                            onChange={(e) => setKeyword(e.target.value)}
-                            id="filled-basic"
-                            label="Search Repositories"
-                            variant="filled"
-                            fullWidth />
+                        <>
+                            <Avatar sx={{ width: 56, height: 56 }} alt={repos[0].owner.login} src={repos[0].owner.avatar_url} />
+                            <h4>{repos[0].owner.login}</h4>
+                            <TextField
+                                value={keyword}
+                                spacing={2}
+                                onChange={(e) => setKeyword(e.target.value)}
+                                id="filled-basic"
+                                label="Search Repositories"
+                                variant="filled"
+                                fullWidth />
+                        </>
                     )}
                     {(!loading && repos.length === 0) && (<h4>No Repositories Found!</h4>)}
                     <List dense={true}>
-                        {/* {repos.map(repo => (
-                        <>
-                            <ListItem key={repo.id}>
-                                <ListItemText
-                                    primary={repo.name}
-                                    secondary={repo.description ? repo.description : null}
-                                />
-                            </ListItem>
-                            <Divider />
-                        </>
-                    ))} */}
                         {filterRepos(repos, keyword).map(repo => (
                             <>
                                 <ListItem key={repo.id} fullWidth>
@@ -77,15 +72,6 @@ const UserRepos = () => {
                                 <Divider />
                             </>
                         ))}
-                        {/* {this.state.players.filter(player =>
-                        player.name.includes(this.state.player)).map(searchedPlayers => {
-                            return (
-                                <tr key={searchedPlayers.name}>
-                                    <td>{searchedPlayers.name}</td>
-                                </tr>
-                            )
-                        })} */}
-
                     </List>
                 </Grid>
             </Container >
