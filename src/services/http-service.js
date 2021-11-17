@@ -1,32 +1,32 @@
 import {
-    INTERNAL_SERVER_ERROR,
-    SOMETHING_WENT_WRONG,
-} from '../utils/constants'
-import { HttpStatusCodes } from '../utils/enums/http-status-codes'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+  INTERNAL_SERVER_ERROR,
+  SOMETHING_WENT_WRONG,
+} from "../utils/constants";
+import { HttpStatusCodes } from "../utils/enums/http-status-codes";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
-const httpClient = axios
+const httpClient = axios;
 
 httpClient.interceptors.response.use(
-    (response: AxiosResponse) => response,
-    (error: AxiosError) => {
-        switch (error.response?.status) {
-            case HttpStatusCodes.Unauthorized:
-            case HttpStatusCodes.BadRequest:
-                //some custom code
-                break
-            case HttpStatusCodes.InternalServerError:
-                if (process.env.NODE_ENV === 'development') {
-                    console.log(INTERNAL_SERVER_ERROR)
-                } else {
-                    console.log(SOMETHING_WENT_WRONG)
-                }
-                break
-            default:
-                break
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => {
+    switch (error.response?.status) {
+      case HttpStatusCodes.Unauthorized:
+      case HttpStatusCodes.BadRequest:
+        //some custom code
+        break;
+      case HttpStatusCodes.InternalServerError:
+        if (process.env.NODE_ENV === "development") {
+          console.log(INTERNAL_SERVER_ERROR);
+        } else {
+          console.log(SOMETHING_WENT_WRONG);
         }
-        return Promise.reject(error)
+        break;
+      default:
+        break;
     }
-)
+    return Promise.reject(error);
+  }
+);
 
-export default httpClient
+export default httpClient;

@@ -1,24 +1,24 @@
-import { AppBar, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
-    toolbar: {
-        margin: '0 auto',
-    },
-    h5: {
-        color: 'white',
-    },
+  toolbar: {
+    margin: "0 auto",
+  },
+  h5: {
+    color: "white",
+  },
 }));
 
 const Navbar = () => {
-    const classes = useStyles();
-    return (
-        <AppBar position="static">
-            <Toolbar className={classes.toolbar}>
-                <Typography variant="h5" className={classes.h5}>
-                    Search Github Repos by Username
-                </Typography>
-            </Toolbar>
-        </AppBar>
-    );
+  const classes = useStyles();
+  return (
+    <AppBar position="static">
+      <Toolbar className={classes.toolbar}>
+        <Typography variant="h5" className={classes.h5}>
+          Search Github Repos by Username
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Navbar;
