@@ -40,7 +40,7 @@ const UsernameSearch = () => {
                     autoComplete="off"
                     onSubmit={(e) => {
                         e.preventDefault()
-                        navigate(`/user/${userNameInput}`)
+                        navigate(`/${userNameInput}`)
                     }}
                 >
                     <TextField
