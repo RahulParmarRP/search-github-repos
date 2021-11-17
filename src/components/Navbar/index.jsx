@@ -14,7 +14,7 @@ const Navbar = () => {
         <AppBar position="static">
             <Toolbar className={classes.toolbar}>
                 <Typography variant="h5" className={classes.h5}>
-                    Search Github Repos
+                    Search Github Repos by Username
                 </Typography>
             </Toolbar>
         </AppBar>
